@@ -5,15 +5,19 @@ import dotenv from 'dotenv';
 import { errorHandler } from './middleware/errorHandler';
 import { notFoundHandler } from './middleware/notFoundHandler';
 
-// Import routes (we'll create these next)
+// Load environment variables
+dotenv.config();
+
+// IMPORTANT: Import these to trigger connection
+import './config/database';  // ADD THIS LINE
+import './config/redis';     // ADD THIS LINE
+
+// Import routes
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import visitorRoutes from './routes/visitor.routes';
 import deliveryRoutes from './routes/delivery.routes';
 import newsRoutes from './routes/news.routes';
-
-// Load environment variables
-dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 3000;

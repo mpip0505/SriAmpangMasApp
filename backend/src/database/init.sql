@@ -62,17 +62,20 @@ CREATE INDEX idx_refresh_tokens_token ON refresh_tokens(token);
 -- PROPERTIES
 -- ============================================
 
+-- ============================================
+-- PROPERTIES
+-- ============================================
+
 CREATE TABLE properties (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     community_id UUID REFERENCES communities(id) ON DELETE CASCADE,
     unit_number VARCHAR(50) NOT NULL,
-    block VARCHAR(50),
     street VARCHAR(255),
     property_type VARCHAR(50),
     is_occupied BOOLEAN DEFAULT false,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(community_id, unit_number, block)
+    UNIQUE(community_id, unit_number) -- REMOVED 'block' FROM HERE
 );
 
 CREATE INDEX idx_properties_community ON properties(community_id);

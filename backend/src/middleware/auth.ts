@@ -27,6 +27,10 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
 
     const jwtSecret = process.env.JWT_SECRET || 'default-secret-change-in-production';
     const decoded = jwt.verify(token, jwtSecret) as any;
+
+    console.log('--- TOKEN DEBUG ---');
+    console.log('User:', decoded.email);
+    console.log('Community ID in Token:', decoded.communityId);
     
     req.user = {
       id: decoded.id,
