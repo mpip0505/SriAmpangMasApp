@@ -15,10 +15,17 @@ export default function GuardHomeScreen({ navigation }: any) {
   const menuItems = [
     {
       title: 'Scan QR Code',
-      subtitle: 'Verify visitor entry',
+      subtitle: 'Use camera to scan',
       icon: '📱',
       route: 'ScanQR',
       color: '#667eea',
+    },
+    {
+      title: 'Enter QR Code',
+      subtitle: 'Type QR code manually',
+      icon: '⌨️',
+      route: 'ManualQR',
+      color: '#764ba2',
     },
     {
       title: 'Validate Passcode',
